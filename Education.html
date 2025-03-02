@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="style.css">
+    <title>Education | Sujin Shrestha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+            margin-left: 250px; /* Offset for the fixed sidebar */
+            padding: 20px;
+            background: #f4f4f4;
+            opacity: 0; /* Initial opacity for fade-in effect */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #333;
+            padding: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 29px;
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        nav a:hover, .active {
+            background-color: #f39c12;
+            border-radius: 4rem;
+        }
+
+
+        /* Education Section Styles */
+        .education-section {
+            width: 100%;
+            padding: 40px 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .education-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* Education Item Styles */
+        .education-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(30px); /* Initially positioned below */
+            transition: all 0.5s ease-in-out;
+        }
+
+        .education-item.visible {
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* Slide into place */
+        }
+
+        .education-item h3 {
+            font-size: 24px;
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+
+        .education-item p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .education-item .date {
+            font-size: 16px;
+            color: #999;
+        }
+
+        .education-item .degree {
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Sujin Shrestha</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Service.html">Service</a>
+            <a href="Skills.html">Skills</a>
+            <a href="Education.html" class="active">Education</a>
+            <a href="contact_us.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="education-section">
+        <h2>My Education</h2>
+
+        <!-- Education 1 -->
+        <div class="education-item">
+            <h3>Bachelor's in Business Studies (BBS)</h3>
+            <p class="degree">Danfe College</p>
+            <p class="date">November 2019 - June 2024</p>
+            <p>I completed my Bachelor's degree in Business Studies at Danfe College. This course is focused on various aspects of Business.</p>
+        </div>
+
+        <!-- Education 2 -->
+        <div class="education-item">
+            <h3>+2 in Business Studies</h3>
+            <p class="degree">Premier Secondary School</p>
+            <p class="date">2017 - 2019</p>
+            <p>I completed my +2 studies in majoring in Business Studies, where I gained foundational knowledge in Business Management.</p>
+        </div>
+
+        <!-- Education 3 -->
+        <div class="education-item">
+            <h3>Secondary Education Examination (SEE)</h3>
+            <p class="degree">South Point Boarding High School</p>
+            <p class="date">2003 - 2017</p>
+            <p>I completed my secondary education from South Point Boarding High School, where I gained a strong foundation in general subjects including Mathematics, Science, and English.</p>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to fully load before running the script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation trigger on scroll
+            const educationItems = document.querySelectorAll('.education-item');
+            
+            // Function to check if an element is in the viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return rect.top <= window.innerHeight && rect.bottom >= 0;
+            }
+
+            // On scroll, check each education item
+            window.addEventListener('scroll', function() {
+                educationItems.forEach(item => {
+                    if (isElementInViewport(item)) {
+                        item.classList.add('visible');
+                    }
+                });
+            });
+
+            // Also trigger for items that are already in the viewport when the page loads
+            educationItems.forEach(item => {
+                if (isElementInViewport(item)) {
+                    item.classList.add('visible');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

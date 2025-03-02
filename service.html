@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="style.css">
+    <title>Our Services | Sujin Shrestha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+            margin-left: 250px; /* Offset for the fixed sidebar */
+            padding: 20px;
+            background: #f4f4f4;
+            opacity: 0; /* Initial opacity for fade-in effect */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #333;
+            padding: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 29px;
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        nav a:hover, .active {
+            background-color: #f39c12;
+            border-radius: 4rem;
+        }
+
+        /* Service Section Styles */
+        .services-section {
+            width: 100%;
+            padding: 40px 0;
+            text-align: center;
+            background-color: #f4f4f4;
+            opacity: 0; /* Initial opacity for fade-in effect */
+            animation: fadeInSection 1s 0.5s forwards; /* Delay fade-in effect */
+        }
+
+        /* Service Cards Fade-in */
+        @keyframes fadeInSection {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .services-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .service-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            opacity: 0; /* Initial opacity for fade-in effect */
+            animation: fadeInSection 1s 1s forwards; /* Fade-in effect for cards */
+        }
+
+        .service-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05); /* Slightly scale up */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: #f39c12;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Contact Button Styles */
+        .contact-button {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #f39c12;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Sujin Shrestha</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Service.html" class="active">Service</a>
+            <a href="Skills.html">Skills</a>
+            <a href="Education.html">Education</a>
+            <a href="contact_us.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="services-section">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Online Sales & E-Commerce Management</h3>
+                <p>We manage online sales platforms, ensuring smooth e-commerce operations, customer satisfaction, and growth.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Sales & Negotiation</h3>
+                <p>Our team excels at closing deals, negotiating terms, and building lasting client relationships.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-users"></i>
+                <h3>Customer Relationship Management (CRM)</h3>
+                <p>We provide CRM solutions to maintain, manage, and enhance your customer interactions and satisfaction.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Market Research & Business Strategy</h3>
+                <p>We deliver data-driven insights and strategies to help businesses grow and adapt in competitive markets.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-box"></i>
+                <h3>Inventory & Sales Tracking</h3>
+                <p>Our inventory and sales tracking solutions help businesses stay organized and monitor performance efficiently.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Problem-Solving & Decision-Making</h3>
+                <p>We offer expert problem-solving strategies and data-backed decision-making support for businesses.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-file-excel"></i>
+                <h3>Microsoft Office Expertise</h3>
+                <p>We provide professional documentation, presentations, and data analysis using Excel, Word, and PowerPoint.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-coffee"></i>
+                <h3>Barista & Coffee Preparation Techniques</h3>
+                <p>We offer expert coffee preparation training and barista services for cafes and coffee businesses.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Beauty & Makeup Industry Services</h3>
+                <p>Our beauty and makeup expertise includes consulting, training, and services for personal and professional needs.</p>
+            </div>
+        </div>
+</div>
+</div>
+
+</body>
+</html>
