@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
         * {
             margin: 0;
             padding: 0;
+            width: 100%;
             box-sizing: border-box;
         }
 
@@ -21,6 +23,8 @@
             align-items: stretch;
             background-color: #f4f4f4;
             overflow-x: hidden;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -35,6 +39,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: center;
             opacity: 0;
             animation: fadeIn 1s ease-in-out forwards;
         }
@@ -53,12 +58,13 @@
             font-size: 29px;
             text-decoration: none;
             margin-bottom: 30px;
+            text-align: center;
         }
 
         nav {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
         }
 
         nav a {
@@ -67,6 +73,7 @@
             padding: 10px 20px;
             width: 100%;
             margin-bottom: 10px;
+            text-align: center;
             opacity: 0;
             animation: fadeInLinks 1s ease-in-out forwards;
         }
@@ -126,6 +133,7 @@
         .home h1 {
             font-size: 36px;
             color: #333;
+            text-align: center;
         }
 
         .home h1 span {
@@ -133,19 +141,20 @@
         }
 
         .typing-text {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        height: 100px; /* Adjust based on your design */
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        white-space: nowrap;
-        overflow: hidden;
-    }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+        }
 
         @keyframes typing {
             from { width: 0; }
-            to { width: 31%; }
+            to { width: 100%; }
         }
 
         @keyframes blink {
@@ -186,17 +195,117 @@
         .btn:hover {
             background-color: #e67e22;
         }
+
+        /* Mobile View Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header {
+                position: static;
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                background-color: #333;
+            }
+
+            nav {
+                flex-direction: row;
+                justify-content: space-around;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background-color: #333;
+                padding: 10px 0;
+            }
+
+            nav a {
+                padding: 10px;
+                margin: 0 5px;
+                font-size: 20px;
+            }
+
+            .logo{
+                margin-bottom: 0%;
+            }
+
+            .home {
+                margin-left: 0;
+                margin-bottom: 75px;
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .home-img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+            }
+
+            .home-img img {
+                width: 80%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .home-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .home-content h1{
+                font-size: 24px;
+            }
+
+            .home-content p{
+                font-size: 16px;
+            }
+
+            .typing-text {
+                justify-content: center;
+                width: 100%;
+                font-size: 10px;
+                font-weight: bold;
+            }
+
+            .typing-text h1{
+                font-size: 16px;
+            }
+
+            .social-icon {
+                display: flex;
+                justify-content: center;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            /* Icon style for mobile nav */
+            nav a i {
+                font-size: 25px;
+                color: #fff;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <a href="#" class="logo">Sujin Shrestha</a>
         <nav>
-            <a href="#" class="active">Home</a>
-            <a href="service.html">Service</a>
-            <a href="skills.html">Skills</a>
-            <a href="Education.html">Education</a>
-            <a href="contact_us.html">Contact</a>
+            <a href="#" class="active"><i class="fa-solid fa-house"></i></a>
+            <a href="service.html"><i class="fa-solid fa-cogs"></i></a>
+            <a href="skills.html"><i class="fa-solid fa-lightbulb"></i></a>
+            <a href="Education.html"><i class="fa-solid fa-graduation-cap"></i></a>
+            <a href="contact_us.html"><i class="fa-solid fa-phone"></i></a>
         </nav>
     </header>
 
@@ -250,6 +359,14 @@
 
         typingText.textContent = currentText;
         adjustFontSize(textArray[currentIndex]); // Adjust font size dynamically
+
+        if (window.innerWidth <= 768) { // Mobile view
+            typingText.style.fontSize = '16px';
+            typingText.style.whiteSpace = 'normal'; // Allow wrapping
+            typingText.style.wordBreak = 'break-word'; // Ensure text doesn’t overflow
+        } else {
+            adjustFontSize(textArray[currentIndex]); // Desktop view
+        }
 
         if (!isDeleting && currentText === textArray[currentIndex]) {
             setTimeout(() => {
