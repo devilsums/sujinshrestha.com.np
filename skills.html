@@ -5,125 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="style.css">
-    <title>Skills | Sujin Shrestha</title>
+    <title>Skills - Sujin Shrestha</title>
     <style>
-       * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    /* Basic styling */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 2;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        background-color: #333;
+        padding: 20px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    header.scrolled {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .logo {
+        color: #fff;
+        font-size: 29px;
+        text-decoration: none;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInLinks 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeInLinks {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    nav a:hover, .active {
+        background-color: #f39c12;
+        border-radius: 4rem;
+    }
+
+    /* Skills Section Styling */
+    .skills-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            margin-top: 80px; /* Add gap between the navbar and the section */
+            animation: fadeInContent 1.5s ease-out forwards;
+            width: calc(100% - 250px); /* Push the section to the right of the navbar */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            margin-right: auto;
         }
 
-        /* Body Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.8;
-            display: flex;
-            justify-content: flex-start;
-            align-items: stretch;
-            margin-left: 250px; /* Offset for the fixed sidebar */
-            padding: 20px;
-            background: #f4f4f4;
-            opacity: 0; /* Initial opacity for fade-in effect */
-            animation: fadeIn 1s forwards; /* Fade-in animation */
-        }
+    .skills-section .title {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
 
-        /* Fade-in Animation */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
+    .skills-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 boxes in a row */
+        gap: 20px;
+        margin-top: 30px;
+    }
 
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 250px;
-            background-color: #333;
-            padding: 20px;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .skill-card {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+    }
 
-        header.scrolled {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+    .skill-card:hover {
+        transform: scale(1.05);
+    }
 
-        .logo {
-            color: #fff;
-            font-size: 29px;
-            text-decoration: none;
-            margin-bottom: 30px;
-        }
+    .skill-card .skill-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #f39c12;
+    }
 
-        nav {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
+    .skill-card .skill-description {
+        font-size: 16px;
+        color: #666;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            width: 100%;
-            transition: background-color 0.3s ease;
-            margin-bottom: 10px;
-        }
+    /* Contact Us Section */
+    .contact-buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-        nav a:hover, .active {
-            background-color: #f39c12;
-            border-radius: 4rem;
-        }
+    .contact-buttons a {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: #f39c12;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
 
+    .contact-buttons a:hover {
+        background-color: #e67e22;
+    }
 
-        /* Skills Section Styles */
-        .skills-section {
-            width: 100%;
-            padding: 40px 0;
-            text-align: center;
-            background-color: #f4f4f4;
-        }
-
-        .skills-section h2 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: #333;
-            opacity: 0;
-            animation: fadeInUp 1s forwards;
-        }
-
-        /* Skill Cards */
-        .skills-cards {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 1s 0.5s forwards;
-        }
-
-        .skill-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            width: 250px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s forwards;
-        }
-
-        .skill-card:hover {
+    .skill-card:hover {
             transform: translateY(-10px);
         }
 
@@ -138,159 +175,155 @@
             margin-bottom: 10px;
         }
 
-        .skill-card p {
-            font-size: 16px;
-            color: #666;
-        }
+    /* Mobile View Styles */
+    @media screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+    }
 
-        /* Progress Bar Styles */
-        .progress-bar-container {
-            width: 100%;
-            height: 10px;
-            background-color: #ddd;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
+    header {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: #333;
+    }
 
-        .progress-bar {
-            height: 100%;
-            background-color: #f39c12;
-            border-radius: 5px;
-            transition: width 1s ease;
-        }
+    nav {
+        flex-direction: row;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 10px 0;
+    }
 
-        .skill-level {
-            text-align: left;
-            margin-top: 15px;
-            font-size: 14px;
-            color: #666;
-        }
+    nav a {
+        padding: 10px;
+        margin: 0 5px;
+        font-size: 20px;
+    }
 
-        /* Keyframes for Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .skills-section {
+        margin-left: 0;
+        margin-top: 80px; /* Add top margin for spacing */
+        padding: 20px; /* Ensure some padding around */
+        width: 100%; /* Take full width of screen */
+        flex-direction: column; /* Column layout for smaller screens */
+        align-items: center;
+        margin-bottom: 75px;
+    }
+
+    .skills-list {
+        display: block;
+    }
+
+    .skill-card {
+        margin-bottom: 15px;
+        text-align: center;
+        width: 100%; /* Make skill cards take full width */
+    }
+
+    .skill-card .skill-title {
+        font-size: 18px;
+    }
+
+    .skill-card .skill-description {
+        font-size: 14px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo">Sujin Shrestha</a>
+        <a href="#" class="logo">Sujin Shrestha</a>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="service.html">Service</a>
-            <a href="skills.html" class="active">Skills</a>
-            <a href="Education.html">Education</a>
-            <a href="contact_us.html">Contact</a>
+            <a href="index.html"><i class="fa-solid fa-house"></i></a>
+            <a href="service.html"><i class="fa-solid fa-cogs"></i></a>
+            <a href="skills.html" class="active"><i class="fa-solid fa-lightbulb"></i></a>
+            <a href="Education.html"><i class="fa-solid fa-graduation-cap"></i></a>
+            <a href="contact_us.html"><i class="fa-solid fa-phone"></i></a>
         </nav>
     </header>
 
     <div class="skills-section">
-        <h2>My Skills</h2>
-        <div class="skills-cards">
+        <h2 class="title">My Skills</h2>
+        <div class="skills-list">
             <!-- Skill 1 -->
             <div class="skill-card">
                 <i class="fas fa-shopping-cart"></i>
-                <h3>Online Sales & E-Commerce Management</h3>
-                <p>Managing online sales platforms, optimizing e-commerce operations, and ensuring seamless customer experiences.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 90%;"></div>
-                </div>
-                <div class="skill-level">Proficient (90%)</div>
+                <div class="skill-title">Online Sales & E-Commerce Management</div>
+                <div class="skill-description">Managing online sales platforms, optimizing e-commerce operations, and ensuring seamless customer experiences.</div>
             </div>
     
             <!-- Skill 2 -->
             <div class="skill-card">
                 <i class="fas fa-handshake"></i>
-                <h3>Sales & Negotiation</h3>
-                <p>Building strong client relationships and closing deals through effective communication and persuasive techniques.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 85%;"></div>
-                </div>
-                <div class="skill-level">Advanced (85%)</div>
+                <div class="skill-title">Sales & Negotiation</div>
+                <div class="skill-description">Building strong client relationships and closing deals through effective communication and persuasive techniques.</div>
             </div>
     
             <!-- Skill 3 -->
             <div class="skill-card">
                 <i class="fas fa-users"></i>
-                <h3>Customer Relationship Management (CRM)</h3>
-                <p>Enhancing customer satisfaction and loyalty through strategic CRM practices and personalized service.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 80%;"></div>
-                </div>
-                <div class="skill-level">Advanced (80%)</div>
+                <div class="skill-title">Customer Relationship Management (CRM)</div>
+                <div class="skill-description">Enhancing customer satisfaction and loyalty through strategic CRM practices and personalized service.</div>
             </div>
     
             <!-- Skill 4 -->
             <div class="skill-card">
                 <i class="fas fa-chart-line"></i>
-                <h3>Market Research & Business Strategy</h3>
-                <p>Analyzing market trends and developing strategies to drive business growth and competitive advantage.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 75%;"></div>
-                </div>
-                <div class="skill-level">Intermediate (75%)</div>
+                <div class="skill-title">Market Research & Business Strategy</div>
+                <div class="skill-description">Analyzing market trends and developing strategies to drive business growth and competitive advantage.</div>
             </div>
     
             <!-- Skill 5 -->
             <div class="skill-card">
                 <i class="fas fa-box"></i>
-                <h3>Inventory & Sales Tracking</h3>
-                <p>Maintaining accurate inventory records and tracking sales performance to optimize stock management.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 85%;"></div>
-                </div>
-                <div class="skill-level">Advanced (85%)</div>
+                <div class="skill-title">Inventory & Sales Tracking</div>
+                <div class="skill-description">Maintaining accurate inventory records and tracking sales performance to optimize stock management.</div>
             </div>
     
             <!-- Skill 6 -->
             <div class="skill-card">
                 <i class="fas fa-lightbulb"></i>
-                <h3>Problem-Solving & Decision-Making</h3>
-                <p>Identifying challenges and implementing effective solutions through critical thinking and sound judgment.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 90%;"></div>
-                </div>
-                <div class="skill-level">Proficient (90%)</div>
+                <div class="skill-title">Problem-Solving & Decision-Making</div>
+                <div class="skill-description">Identifying challenges and implementing effective solutions through critical thinking and sound judgment.</div>
             </div>
     
             <!-- Skill 7 -->
             <div class="skill-card">
                 <i class="fas fa-file-alt"></i>
-                <h3>Microsoft Office (Excel, Word, PowerPoint)</h3>
-                <p>Creating and managing documents, spreadsheets, and presentations with advanced MS Office skills.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 95%;"></div>
-                </div>
-                <div class="skill-level">Expert (95%)</div>
+                <div class="skill-title">Microsoft Office (Excel, Word, PowerPoint)</div>
+                <div class="skill-description">Creating and managing documents, spreadsheets, and presentations with advanced MS Office skills.</div>
             </div>
     
             <!-- Skill 8 -->
             <div class="skill-card">
                 <i class="fas fa-coffee"></i>
-                <h3>Barista & Coffee Preparation Techniques</h3>
-                <p>Crafting high-quality coffee beverages and mastering barista techniques for exceptional service.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 80%;"></div>
-                </div>
-                <div class="skill-level">Advanced (80%)</div>
+                <div class="skill-title">Barista & Coffee Preparation Techniques</div>
+                <div class="skill-description">Crafting high-quality coffee beverages and mastering barista techniques for exceptional service.</div>
             </div>
     
             <!-- Skill 9 -->
             <div class="skill-card">
                 <i class="fas fa-paint-brush"></i>
-                <h3>Beauty & Makeup Industry Experience</h3>
-                <p>Providing professional makeup services and staying updated with the latest beauty industry trends.</p>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 70%;"></div>
-                </div>
-                <div class="skill-level">Intermediate (70%)</div>
+                <div class="skill-title">Beauty & Makeup Industry Experience</div>
+                <div class="skill-description">Providing professional makeup services and staying updated with the latest beauty industry trends.</div>
             </div>
         </div>
     </div>
     
-
 </body>
 </html>
