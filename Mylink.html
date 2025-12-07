@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="style.css">
+    <title>My Profiles - Sujin Shrestha</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 2;
+        display: flex;
+        background-color: #f4f4f4;
+        min-height: 100vh;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        background-color: #333;
+        padding: 20px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .logo {
+        color: #fff;
+        font-size: 29px;
+        text-decoration: none;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInLinks 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeInLinks {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    nav a:hover, .active {
+        background-color: purple;
+        border-radius: 4rem;
+    }
+
+    /* Profiles Section */
+    .profiles-section {
+        margin-left: 250px;
+        padding: 50px 20px;
+        width: calc(100% - 250px);
+        animation: slideIn 1s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(0); }
+    }
+
+    .title {
+        font-size: 36px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background-color: purple;
+    }
+
+    /* Profiles Container */
+    .profiles-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Profile Cards */
+    .profile-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        opacity: 0;
+        animation: fadeInContent 1s ease-out forwards;
+        transition: all 0.3s ease;
+    }
+
+    @keyframes fadeInContent {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 4px solid purple;
+    }
+
+    .profile-name {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .profile-role {
+        color: purple;
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: 500;
+    }
+
+    .profile-bio {
+        color: #666;
+        margin-bottom: 25px;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .facebook { background-color: #1877f2; }
+    .instagram { background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
+    .tiktok { background-color: #000000; }
+
+    .visit-btn {
+        display: inline-block;
+        background-color: purple;
+        color: white;
+        padding: 10px 25px;
+        text-decoration: none;
+        border-radius: 25px;
+        margin-top: 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .visit-btn:hover {
+        background-color: #6a1b9a;
+        transform: translateY(-2px);
+    }
+
+    /* Mobile View Styles */
+    @media screen and (max-width: 768px) {
+        body {
+            flex-direction: column;
+        }
+
+        header {
+            position: static;
+            width: 100%;
+            height: auto;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+        }
+
+        nav {
+            flex-direction: row;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav a {
+            padding: 10px;
+            margin: 0 5px;
+            font-size: 20px;
+        }
+
+        .logo {
+            margin-bottom: 0;
+        }
+
+        .profiles-section {
+            margin-left: 0;
+            margin-bottom: 75px;
+            padding: 30px 15px;
+            width: 100%;
+        }
+
+        .profiles-container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .profile-card {
+            padding: 25px 20px;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+        }
+
+        .title {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Sujin Shrestha</a>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house"></i></a>
+            <a href="service.html"><i class="fa-solid fa-cogs"></i></a>
+            <a href="skills.html"><i class="fa-solid fa-lightbulb"></i></a>
+            <a href="experience.html"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="Education.html"><i class="fa-solid fa-graduation-cap"></i></a>
+            <a href="Mylink.html" class="active"><i class="fa-solid fa-user-circle"></i></a>
+            <a href="contact_us.html"><i class="fa-solid fa-phone"></i></a>
+        </nav>
+    </header>
+
+    <section class="profiles-section">
+        <h2 class="title">My Work Profiles</h2>
+        
+        <div class="profiles-container">
+            <!-- Profile 1: Personal Account -->
+            <div class="profile-card">
+                <img src="img/428619976_878728300928971_8423006957650804365_n.jpg" alt="Sujin Shrestha" class="profile-pic">
+                <h3 class="profile-name">Sujin Pacific Traders</h3>
+                <p class="profile-bio">We provide almost every vehicle parts available in market and even buy and sell second hand vehicles. We also have electronic device and other product where we import from China and India</p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/sujinpacifictraders" target="_blank" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/sp__traders/" target="_blank" class="social-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@sp__traders" target="_blank" class="social-btn tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+            </div>
+
+            <!-- Profile 2: Business Account -->
+            <div class="profile-card">
+                <img src="img/430996158_122102355812229819_4983951863676578566_n.jpg" alt="Sujin Business" class="profile-pic">
+                <h3 class="profile-name">Hari Maruti Autoparts Traders</h3>
+                <div class="profile-role"></div>
+                <p class="profile-bio">We provide a complete range of genuine and quality aftermarket auto parts for cars, trucks, and commercial vehicles—all under one roof.</p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/hmapt1" target="_blank" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/hma__pt/" target="_blank" class="social-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@hmapt5" target="_blank" class="social-btn tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+                </div>
+
+            <!-- Profile 3: Creative Account -->
+            <div class="profile-card">
+                <img src="img/416354165_122095236152187907_8364892152980436633_n.jpg" alt="Sujin Creative" class="profile-pic">
+                <h3 class="profile-name">SP Pet Supplies </h3>
+                <div class="profile-role"></div>
+                <p class="profile-bio">Everything that your furry friend needs. We provide all kinds of pet items like dog/cat food, toys, accessories, and grooming products. We also sell healthy and home-raised pet animals.
+
+</p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61555637215039" target="_blank" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/sp__petsupplies/" target="_blank" class="social-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@sp.pet.supplies" target="_blank" class="social-btn tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                
+    
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add animation delays for profile cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.profile-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
+</body>
+</html>
